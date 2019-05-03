@@ -42,6 +42,23 @@ router.get('/delete/:id', function (req, res) {
     		res.redirect('/');
 		});
 });
+
+router.get('/editar/:id',function(req,res){
+	var id = req.params.id;
+	let datos = {
+			nombre : req.body.nombre,
+			apellido : req.body.apellido,
+			email : req.body.email, 
+		};
+	model.updateOne({"_id" : id},datos,function(err,data){
+			if(err){ 
+				console.log(err);
+				res.sendStatus(500);
+			}else{
+				res.redirect('/');
+			}
+		});
+});
 router.post('/cargar', upload.single('file'),function(req,res){
 
 	let obj = new model;

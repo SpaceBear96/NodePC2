@@ -46,11 +46,77 @@
                         </div>
                         <div class="col-12 col-sm-6 col-md-2">
                             
-                            <a class="button-dangers" href="/delete/<%=item._id%>"> Eliminar </a>
+                            <a class="btn btn-light" data-toggle="modal" data-target="#myModal1"> Editar </a> 
+                            <br><br><br>
+                            <a class="btn btn-danger" data-toggle="modal" data-target="#myModal3"> Eliminar </a>
 
                         </div>
                     </div>
                 </li>
+                <div class="modal fade" id="myModal3" tabindex="6" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                     <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content" style="width: 350px;">
+                    <div class="modal-body">
+                        <br>
+                        <h4>Estas seguro que deseas elimiminar esto?</h4>
+                        <br>
+                        <div style="float:right;">
+                            <a class="btn btn-light">Cancelar</a>
+                            <a class="btn btn-danger" style="width: 60px;" href="/delete/<%=item._id%>" >Si</a>
+                        </div>
+                    </div>
+                </div></div>
+                </div>
+                <div class="modal fade" id="myModal1" tabindex="6" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content" style="width: 350px;">
+                        <div class="modal-header">
+                            
+                            <h4 class="modal-title" id="myModalLabel">Editar Información</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form enctype="multipart/form-data" action="/editar/<%=item.id%>" method="post" id="uploadForm">
+    <div class="form-group">
+        <label for="nombreInput">Nombres</label>
+        <input type="text" class="form-control" id="nombreInput" name="nombre" value="<%=item.nombre%>" placeholder="Ingrese el Nombre" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Apellidos</label>
+        <input type="text" class="form-control" id="apellidoInput" value="<%=item.apellido%>" name="apellido" placeholder="Ingrese el Apellido">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" value="<%=item.email%>" name="email" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">F. Nacimiento</label>
+        <input type="date" class="form-control" id="fechaInput" value="<%=item.date%>" name="date">
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-7">  
+                <label for="file">Subir Perfil</label>
+                <input type="file" name="file" id="file" class="form-control-file" />
+            </div>
+            <div class="col-md-5" style="display:none;" id="cont">
+                <img src="" id="img" class="rounded" width="90" height="60"   >
+            </div>
+        </div>
+    </div>
+    
+    <input type="submit" class="btn btn-primary" value="Submit" name="submit">
+  
+    </form>
+
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
                 <% });%>
             </ul>
             <!--/contacts list-->
@@ -62,6 +128,7 @@
 <div class="container pb-modalreglog-container">
     <div class="row">
         <div class="col-xs-5 col-md-12 col-md-offset-6">
+            <!--Primer Modal-->
             <div class="modal fade" id="myModal2" tabindex="6" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-sm" role="document">
                     <div class="modal-content" style="width: 350px;">
@@ -106,6 +173,67 @@
     <input type="submit" class="btn btn-primary" value="Submit" name="submit">
   
     </form>
+
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!--Segundo Modal-->
+             <div class="modal fade" id="myModal1" tabindex="6" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content" style="width: 350px;">
+                        <div class="modal-header">
+                            
+                            <h4 class="modal-title" id="myModalLabel">Registration form</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form enctype="multipart/form-data" action="/cargar" method="post" id="uploadForm">
+    <div class="form-group">
+        <label for="nombreInput">Nombres</label>
+        <input type="text" class="form-control" id="nombreInput" name="nombre" placeholder="Ingrese el Nombre" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Apellidos</label>
+        <input type="text" class="form-control" id="apellidoInput" name="apellido" placeholder="Ingrese el Apellido">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">F. Nacimiento</label>
+        <input type="date" class="form-control" id="fechaInput" name="date">
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-7">  
+                <label for="file">Subir Perfil</label>
+                <input type="file" name="file" id="file" class="form-control-file" />
+            </div>
+            <div class="col-md-5" style="display:none;" id="cont">
+                <img src="" id="img" class="rounded" width="90" height="60"   >
+            </div>
+        </div>
+    </div>
+    
+    <input type="submit" class="btn btn-primary" value="Submit" name="submit">
+  
+    </form>
+
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     <script type="text/javascript">
     function filePreview(input) {
     if (input.files && input.files[0]) {
@@ -123,15 +251,6 @@
     filePreview(this);
 });
     </script>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <style>
     .pb-modalreglog-container
     {
