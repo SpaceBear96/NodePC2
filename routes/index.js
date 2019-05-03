@@ -10,7 +10,7 @@ var AWS = require('aws-sdk');
 var stream = require('stream');
 	
 router.get('/', function (req, res) {
-    res.render('error');
+    res.render('index');
 });
  
 router.post('/cargar', upload.single('file'),function(req,res){
