@@ -27,7 +27,9 @@ router.post('/cargar', upload.single('file'),function(req,res){
          Body: null, // pass file body
 	};
 	
-	uploadParams.Key = req.file.originalname;
+	var name = Date.now()+"_"+req.file.originalname;
+
+	uploadParams.Key = name;
 	uploadParams.Body = req.file.buffer;
 		
 	s3Client.upload(uploadParams, (err, data) => {
